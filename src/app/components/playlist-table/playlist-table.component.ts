@@ -77,6 +77,7 @@ export class PlaylistTableComponent implements OnInit {
   }
 
   updateDB(index: number) {
+    this.runFilters(this.filterForm.value)
     console.log(`Update table at index: ${index}`);
     console.log(this.dataSource.data.at(index).value)
   }
