@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, Form, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PlaylistResponse } from 'src/app/services/playlists/playlist-response';
 import { PlaylistsService } from 'src/app/services/playlists/playlists.service';
@@ -13,8 +12,6 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
   styleUrls: ['./playlist-table.component.scss']
 })
 export class PlaylistTableComponent implements OnInit {
-
-  @ViewChild(MatSort) sort!: MatSort;
 
   PLAYLIST_DATA: PlaylistResponse = []
   parentForm!: FormGroup;
@@ -41,25 +38,18 @@ export class PlaylistTableComponent implements OnInit {
             likes: playlist.likes,
             description: playlist.description,
             url: playlist.url,
-            status: 'unprocessed',
-            submittedSongs: this.formBuilder.control([]),
-            notes: ''
+            status: playlist.status,
+            submittedSongs: this.formBuilder.control(playlist.submittedSongs),
+            notes: playlist.notes
           }))
         })
         this.dataSource = new MatTableDataSource(this.formArray.controls)
-        this.dataSource.sort = this.sort
-        this.dataSource.sortingDataAccessor = ((item, property) => {
-          return item[property]
-        });
-        console.log(this.formArray)
-        console.log(this.dataSource);
 
       }
     })
     this.parentForm.valueChanges.subscribe(() => {
       console.log(this.parentForm)
     })
-
 
     this.filterForm = this.formBuilder.group({
       unprocessed: true,
@@ -151,9 +141,6 @@ export class PlaylistTableComponent implements OnInit {
     )
 
     deepForm = this.formBuilder.array(deepFormControls)
-
-    // console.log(this.formArray);
-    // console.log(deepForm);
 
     this.dataSource = new MatTableDataSource(deepForm.controls)
 

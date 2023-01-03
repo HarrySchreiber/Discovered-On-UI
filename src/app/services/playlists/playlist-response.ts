@@ -5,4 +5,7 @@ export interface Playlist {
     description: string
     likes: number
     url: string
+    status: string
+    notes: string
+    submittedSongs: string[]
 }
