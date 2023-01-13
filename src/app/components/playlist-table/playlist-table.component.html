@@ -11,14 +11,14 @@
     </mat-expansion-panel-header>
     <form [formGroup]="filterForm">
       <mat-form-field appearance="outline">
-        <mat-chip-list #chipList>
-          <mat-chip *ngFor="let term of filterForm.value.search" (removed)="removeSearchTerm(term)">
+        <mat-chip-grid #chipGrid>
+          <mat-chip-row *ngFor="let term of filterForm.value.search" (removed)="removeSearchTerm(term)">
             {{term}}
             <mat-icon matChipRemove>cancel</mat-icon>
-          </mat-chip>
-        </mat-chip-list>
+          </mat-chip-row>
+        </mat-chip-grid>
         <input placeholder="Add Search Term..."
-           [matChipInputFor]="chipList"
+           [matChipInputFor]="chipGrid"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            (matChipInputTokenEnd)="addSearchTerm($event)">
       </mat-form-field><br>

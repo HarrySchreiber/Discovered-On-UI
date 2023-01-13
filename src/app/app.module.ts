@@ -5,21 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlaylistTableComponent } from './components/playlist-table/playlist-table.component';
-import { MatTableModule } from '@angular/material/table'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatRadioModule } from '@angular/material/radio'
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatInputModule } from '@angular/material/input'
-import { MatSortModule } from '@angular/material/sort';
-import { MatExpansionModule } from '@angular/material/expansion'
-import { MatCheckboxModule } from '@angular/material/checkbox'
-import { MatChipsModule } from '@angular/material/chips'
-import { MatIconModule } from '@angular/material/icon'
-import { MatSliderModule } from '@angular/material/slider'
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -30,22 +24,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatTableModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule,
-    MatFormFieldModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatInputModule,
-    MatSortModule,
-    MatExpansionModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatIconModule,
-    MatSliderModule,
-    MatProgressSpinnerModule,
     HttpClientModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatChipsModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
