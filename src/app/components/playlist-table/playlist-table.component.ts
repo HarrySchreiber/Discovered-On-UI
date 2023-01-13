@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, Form, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatTableDataSource } from '@angular/material/table';
-import { PlaylistResponse } from 'src/app/services/playlists/playlist-response';
+import { Playlist, PlaylistResponse } from 'src/app/services/playlists/playlist-response';
 import { PlaylistsService } from 'src/app/services/playlists/playlists.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
@@ -47,9 +47,6 @@ export class PlaylistTableComponent implements OnInit {
 
       }
     })
-    this.parentForm.valueChanges.subscribe(() => {
-      console.log(this.parentForm)
-    })
 
     this.filterForm = this.formBuilder.group({
       unprocessed: true,
@@ -66,10 +63,25 @@ export class PlaylistTableComponent implements OnInit {
 
   }
 
-  updateDB(index: number) {
+  updateDB(index: number, updateKey: string) {
     this.runFilters(this.filterForm.value)
-    console.log(`Update table at index: ${index}`);
-    console.log(this.dataSource.data.at(index).value)
+    const currentPlaylist = this.dataSource.data.at(index).value as Playlist;
+    var updateValue;
+    switch(true){
+      case updateKey === 'status':
+        updateValue = currentPlaylist.status
+        break
+      case updateKey === 'submittedSongs':
+        updateValue = currentPlaylist.submittedSongs
+        break
+      case updateKey === 'notes':
+        updateValue = currentPlaylist.notes
+        break
+    }
+    this.playlistService.updateDB(currentPlaylist.url, updateKey, updateValue).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e)
+    })
   }
 
   addSearchTerm(event: MatChipInputEvent) {
@@ -96,7 +108,6 @@ export class PlaylistTableComponent implements OnInit {
   }
 
   runFilters(filter: any) {
-    console.log(filter);
     var deepForm = this.formBuilder.array(this.formArray.controls)
 
     var deepFormControls = deepForm.controls

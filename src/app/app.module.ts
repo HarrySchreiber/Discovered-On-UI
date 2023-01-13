@@ -17,6 +17,8 @@ import { MatExpansionModule } from '@angular/material/expansion'
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatChipsModule } from '@angular/material/chips'
 import { MatIconModule } from '@angular/material/icon'
+import { MatSliderModule } from '@angular/material/slider'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { MatIconModule } from '@angular/material/icon'
     MatCheckboxModule,
     MatChipsModule,
     MatIconModule,
+    MatSliderModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
