@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Playlist, PlaylistResponse } from 'src/app/services/playlists/playlist-response';
 import { PlaylistsService } from 'src/app/services/playlists/playlists.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-playlist-table',
@@ -17,6 +18,7 @@ export class PlaylistTableComponent implements OnInit {
   parentForm!: FormGroup;
   formArray!: FormArray
   filterForm!: FormGroup;
+  loading: boolean = true
 
   constructor(private playlistService: PlaylistsService, private formBuilder: FormBuilder) { }
 
@@ -44,7 +46,7 @@ export class PlaylistTableComponent implements OnInit {
           }))
         })
         this.dataSource = new MatTableDataSource(this.formArray.controls)
-
+        this.loading = false
       }
     })
 

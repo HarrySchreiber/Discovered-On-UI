@@ -60,7 +60,7 @@
     </ng-container>
 
     <ng-container matColumnDef="playlistStatus">
-      <th mat-header-cell *matHeaderCellDef > playlistStatus </th>
+      <th mat-header-cell *matHeaderCellDef > Playlist Status </th>
       <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
         <mat-radio-group formControlName="playlistStatus" aria-label="Select an option" (change)="updateDB(i, 'playlistStatus')">
           <mat-radio-button value="unprocessed" [checked]="playlist.value.playlistStatus == 'unprocessed'">Unprocessed
@@ -108,3 +108,10 @@
     }"></tr>
   </table>
 </form>
+<mat-progress-spinner
+        *ngIf="loading"
+        class="example-margin"
+        [color]="'accent'"
+        [mode]="'indeterminate'"
+        style="margin: auto; margin-top: 20px;">
+</mat-progress-spinner>

@@ -19,6 +19,7 @@ import { MatChipsModule } from '@angular/material/chips'
 import { MatIconModule } from '@angular/material/icon'
 import { MatSliderModule } from '@angular/material/slider'
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatChipsModule,
     MatIconModule,
     MatSliderModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
   ],
   providers: [],
