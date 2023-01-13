@@ -59,18 +59,18 @@
       <td mat-cell *matCellDef="let playlist"> {{playlist.value.description}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef > Status </th>
+    <ng-container matColumnDef="playlistStatus">
+      <th mat-header-cell *matHeaderCellDef > playlistStatus </th>
       <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
-        <mat-radio-group formControlName="status" aria-label="Select an option" (change)="updateDB(i, 'status')">
-          <mat-radio-button value="unprocessed" [checked]="playlist.value.status == 'unprocessed'">Unprocessed
+        <mat-radio-group formControlName="playlistStatus" aria-label="Select an option" (change)="updateDB(i, 'playlistStatus')">
+          <mat-radio-button value="unprocessed" [checked]="playlist.value.playlistStatus == 'unprocessed'">Unprocessed
           </mat-radio-button><br>
-          <mat-radio-button value="submitted" [checked]="playlist.value.status == 'submitted'">Submitted/In Prog
+          <mat-radio-button value="submitted" [checked]="playlist.value.playlistStatus == 'submitted'">Submitted/In Prog
           </mat-radio-button><br>
-          <mat-radio-button value="accepted" [checked]="playlist.value.status == 'accepted'">Accepted</mat-radio-button>
+          <mat-radio-button value="accepted" [checked]="playlist.value.playlistStatus == 'accepted'">Accepted</mat-radio-button>
           <br>
-          <mat-radio-button value="denied" [checked]="playlist.value.status == 'denined'">Denied</mat-radio-button><br>
-          <mat-radio-button value="ignore" [checked]="playlist.value.status == 'ignore'">Ignore/Do Not Submit
+          <mat-radio-button value="denied" [checked]="playlist.value.playlistStatus == 'denined'">Denied</mat-radio-button><br>
+          <mat-radio-button value="ignore" [checked]="playlist.value.playlistStatus == 'ignore'">Ignore/Do Not Submit
           </mat-radio-button><br>
         </mat-radio-group>
       </td>
@@ -101,10 +101,10 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
-      'submitted': row.value.status == 'submitted',
-      'accepted': row.value.status == 'accepted',
-      'denied': row.value.status == 'denied',
-      'ignore': row.value.status == 'ignore'
+      'submitted': row.value.playlistStatus == 'submitted',
+      'accepted': row.value.playlistStatus == 'accepted',
+      'denied': row.value.playlistStatus == 'denied',
+      'ignore': row.value.playlistStatus == 'ignore'
     }"></tr>
   </table>
 </form>

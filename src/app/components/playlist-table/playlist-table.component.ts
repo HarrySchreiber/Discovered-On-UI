@@ -21,7 +21,7 @@ export class PlaylistTableComponent implements OnInit {
   constructor(private playlistService: PlaylistsService, private formBuilder: FormBuilder) { }
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  displayedColumns: string[] = ['title', 'likes', 'description', 'status', 'submittedSongs', 'notes'];
+  displayedColumns: string[] = ['title', 'likes', 'description', 'playlistStatus', 'submittedSongs', 'notes'];
   dataSource!: MatTableDataSource<any>
   ngOnInit(): void {
     this.formArray = this.formBuilder.array([])
@@ -38,7 +38,7 @@ export class PlaylistTableComponent implements OnInit {
             likes: playlist.likes,
             description: playlist.description,
             url: playlist.url,
-            status: playlist.status,
+            playlistStatus: playlist.playlistStatus,
             submittedSongs: this.formBuilder.control(playlist.submittedSongs),
             notes: playlist.notes
           }))
@@ -68,8 +68,8 @@ export class PlaylistTableComponent implements OnInit {
     const currentPlaylist = this.dataSource.data.at(index).value as Playlist;
     var updateValue;
     switch(true){
-      case updateKey === 'status':
-        updateValue = currentPlaylist.status
+      case updateKey === 'playlistStatus':
+        updateValue = currentPlaylist.playlistStatus
         break
       case updateKey === 'submittedSongs':
         updateValue = currentPlaylist.submittedSongs
@@ -141,11 +141,11 @@ export class PlaylistTableComponent implements OnInit {
     //Status Filter
     deepFormControls = deepFormControls.filter(
       (group) => {
-        const unprocessed = filter.unprocessed && group.value.status === "unprocessed"
-        const submitted = filter.submitted && group.value.status === "submitted"
-        const accepted = filter.accepted && group.value.status === "accepted"
-        const denied = filter.denied && group.value.status === "denied"
-        const ignore = filter.ignore && group.value.status === "ignore"
+        const unprocessed = filter.unprocessed && group.value.playlistStatus === "unprocessed"
+        const submitted = filter.submitted && group.value.playlistStatus === "submitted"
+        const accepted = filter.accepted && group.value.playlistStatus === "accepted"
+        const denied = filter.denied && group.value.playlistStatus === "denied"
+        const ignore = filter.ignore && group.value.playlistStatus === "ignore"
 
         return unprocessed || submitted || accepted || denied || ignore
       }

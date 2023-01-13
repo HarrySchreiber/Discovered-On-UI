@@ -5,7 +5,7 @@ export interface Playlist {
     description: string
     likes: number
     url: string
-    status: string
+    playlistStatus: string
     notes: string
     submittedSongs: string[]
 }
