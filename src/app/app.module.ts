@@ -14,6 +14,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatRadioModule,
     MatChipsModule,
     MatExpansionModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
