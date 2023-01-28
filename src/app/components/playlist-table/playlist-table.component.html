@@ -17,10 +17,8 @@
             <mat-icon matChipRemove>cancel</mat-icon>
           </mat-chip-row>
         </mat-chip-grid>
-        <input placeholder="Add Search Term..."
-           [matChipInputFor]="chipGrid"
-           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-           (matChipInputTokenEnd)="addSearchTerm($event)">
+        <input placeholder="Add Search Term..." [matChipInputFor]="chipGrid"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addSearchTerm($event)">
       </mat-form-field><br>
       <mat-checkbox formControlName='unprocessed'>Unprocessed</mat-checkbox><br>
       <mat-checkbox formControlName='submitted'>Submitted/In Prog</mat-checkbox><br>
@@ -34,84 +32,86 @@
 
 <p style="margin-left: 5%; color: white;">Showing {{dataSource.data.length}} of {{formArray.length}} results</p>
 
-<form [formGroup]="parentForm">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="container">
+  <form [formGroup]="parentForm">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+      <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef > Title </th>
-      <td mat-cell *matCellDef="let playlist"> <a href="{{playlist.value.url}}"
-          target="_blank">{{playlist.value.title}}</a> </td>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let playlist"> <a href="{{playlist.value.url}}"
+            target="_blank">{{playlist.value.title}}</a> </td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="likes">
-      <th mat-header-cell *matHeaderCellDef > Likes </th>
-      <td mat-cell *matCellDef="let playlist"> {{playlist.value.likes}} </td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="likes">
+        <th mat-header-cell *matHeaderCellDef> Likes </th>
+        <td mat-cell *matCellDef="let playlist"> {{playlist.value.likes}} </td>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let playlist"> {{playlist.value.description}} </td>
-    </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let playlist"> {{playlist.value.description}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="playlistStatus">
-      <th mat-header-cell *matHeaderCellDef > Playlist Status </th>
-      <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
-        <mat-radio-group formControlName="playlistStatus" aria-label="Select an option" (change)="updateDB(i, 'playlistStatus')">
-          <mat-radio-button value="unprocessed" [checked]="playlist.value.playlistStatus == 'unprocessed'">Unprocessed
-          </mat-radio-button><br>
-          <mat-radio-button value="submitted" [checked]="playlist.value.playlistStatus == 'submitted'">Submitted/In Prog
-          </mat-radio-button><br>
-          <mat-radio-button value="accepted" [checked]="playlist.value.playlistStatus == 'accepted'">Accepted</mat-radio-button>
-          <br>
-          <mat-radio-button value="denied" [checked]="playlist.value.playlistStatus == 'denined'">Denied</mat-radio-button><br>
-          <mat-radio-button value="ignore" [checked]="playlist.value.playlistStatus == 'ignore'">Ignore/Do Not Submit
-          </mat-radio-button><br>
-        </mat-radio-group>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="playlistStatus">
+        <th mat-header-cell *matHeaderCellDef> Playlist Status </th>
+        <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
+          <mat-radio-group formControlName="playlistStatus" aria-label="Select an option"
+            (change)="updateDB(i, 'playlistStatus')">
+            <mat-radio-button value="unprocessed" [checked]="playlist.value.playlistStatus == 'unprocessed'">Unprocessed
+            </mat-radio-button><br>
+            <mat-radio-button value="submitted" [checked]="playlist.value.playlistStatus == 'submitted'">Submitted/In
+              Prog
+            </mat-radio-button><br>
+            <mat-radio-button value="accepted"
+              [checked]="playlist.value.playlistStatus == 'accepted'">Accepted</mat-radio-button>
+            <br>
+            <mat-radio-button value="denied"
+              [checked]="playlist.value.playlistStatus == 'denined'">Denied</mat-radio-button><br>
+            <mat-radio-button value="ignore" [checked]="playlist.value.playlistStatus == 'ignore'">Ignore/Do Not Submit
+            </mat-radio-button><br>
+          </mat-radio-group>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="submittedSongs">
-      <th mat-header-cell *matHeaderCellDef> Submitted Songs </th>
-      <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
-        <mat-form-field appearance="outline">
-          <mat-select formControlName="submittedSongs" (openedChange)="updateDB(i, 'submittedSongs')" multiple>
-            <mat-option value="Wasted Dreams">Wasted Dreams</mat-option>
-            <mat-option value="Theif">Theif</mat-option>
-            <mat-option value="Meet Me">Meet Me</mat-option>
-            <mat-option value="Don't Want To Be Friends">Don't Want To Be Friends</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="submittedSongs">
+        <th mat-header-cell *matHeaderCellDef> Submitted Songs </th>
+        <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="submittedSongs" (openedChange)="updateDB(i, 'submittedSongs')" multiple>
+              <mat-option value="Wasted Dreams">Wasted Dreams</mat-option>
+              <mat-option value="Theif">Theif</mat-option>
+              <mat-option value="Meet Me">Meet Me</mat-option>
+              <mat-option value="Don't Want To Be Friends">Don't Want To Be Friends</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="notes">
-      <th mat-header-cell *matHeaderCellDef> Notes </th>
-      <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
-        <mat-form-field appearance="outline">
-          <input matInput formControlName="notes" (focusout)="updateDB(i, 'notes')">
-        </mat-form-field>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef> Notes </th>
+        <td mat-cell *matCellDef="let playlist; let i = index" [formGroup]="playlist">
+          <mat-form-field appearance="outline">
+            <input matInput formControlName="notes" (focusout)="updateDB(i, 'notes')">
+          </mat-form-field>
+        </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
       'submitted': row.value.playlistStatus == 'submitted',
       'accepted': row.value.playlistStatus == 'accepted',
       'denied': row.value.playlistStatus == 'denied',
       'ignore': row.value.playlistStatus == 'ignore'
     }"></tr>
-  </table>
-</form>
-<mat-progress-spinner
-        *ngIf="loading"
-        class="example-margin"
-        [color]="'accent'"
-        [mode]="'indeterminate'"
-        style="margin: auto; margin-top: 20px;">
+    </table>
+  </form>
+</div>
+<mat-progress-spinner *ngIf="loading" class="example-margin" [color]="'accent'" [mode]="'indeterminate'"
+  style="margin: auto; margin-top: 20px;">
 </mat-progress-spinner>
