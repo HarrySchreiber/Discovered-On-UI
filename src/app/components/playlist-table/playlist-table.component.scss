@@ -50,9 +50,13 @@ a:hover {
         ::ng-deep .mat-mdc-radio-button .mdc-form-field {
             --mdc-theme-text-primary-on-background: #525252 !important;
         }
+        
+        ::ng-deep .mat-mdc-form-field {
+            color:#525252;
+        }
 
-        ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-            color: #525252!important;
+        ::ng-deep .mdc-form-field-appearance-outline .mdc-form-field-outline {
+            color: #525252 !important;
         }
         ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
             color: #525252;
@@ -73,26 +77,21 @@ a:hover {
         a {
             color: #525252;
         }
-        $myMatRadioRippleColor: #525252;
-
-        ::ng-deep .mat-radio-button.mat-accent {
-            &.mat-radio-checked .mat-radio-outer-circle {
-                border-color: $myMatRadioRippleColor !important; 
-            }
-
-            .mat-radio-inner-circle {
-                color: $myMatRadioRippleColor !important;
-                background-color: $myMatRadioRippleColor !important;
-            }
-
-            .mat-radio-outer-circle {
-                border-color: $myMatRadioRippleColor;
-            }
-
-            .mat-radio-ripple .mat-ripple-element {
-                background-color: $myMatRadioRippleColor !important;
-            }
+        
+        .mat-mdc-radio-button.mat-accent {
+            --mdc-radio-unselected-icon-color: #525252 !important;
+            --mdc-radio-unselected-hover-icon-color: #525252 !important;
+            --mdc-radio-selected-icon-color: #525252 !important;
+            --mdc-radio-selected-hover-icon-color: #525252 !important;
+            --mdc-radio-selected-pressed-icon-color: #525252 !important;
+            --mat-mdc-radio-checked-ripple-color: #525252 !important;
         }
+
+        ::ng-deep .mat-mdc-radio-button .mdc-form-field {
+            --mdc-theme-text-primary-on-background: #525252 !important;
+        }
+
+
         ::ng-deep .mat-select-value {
             color: #525252;
         }
@@ -118,25 +117,18 @@ a:hover {
         a {
             color: white;
         }
-        $myMatRadioRippleColor: white;
+        
+        .mat-mdc-radio-button.mat-accent {
+            --mdc-radio-unselected-icon-color: white !important;
+            --mdc-radio-unselected-hover-icon-color: white !important;
+            --mdc-radio-selected-icon-color: white !important;
+            --mdc-radio-selected-hover-icon-color: white !important;
+            --mdc-radio-selected-pressed-icon-color: white !important;
+            --mat-mdc-radio-checked-ripple-color: white !important;
+        }
 
-        ::ng-deep .mat-radio-button.mat-accent {
-            &.mat-radio-checked .mat-radio-outer-circle {
-                border-color: $myMatRadioRippleColor !important; 
-            }
-
-            .mat-radio-inner-circle {
-                color: $myMatRadioRippleColor !important;
-                background-color: $myMatRadioRippleColor !important;
-            }
-
-            .mat-radio-outer-circle {
-                border-color: $myMatRadioRippleColor;
-            }
-
-            .mat-radio-ripple .mat-ripple-element {
-                background-color: $myMatRadioRippleColor !important;
-            }
+        ::ng-deep .mat-mdc-radio-button .mdc-form-field {
+            --mdc-theme-text-primary-on-background: white !important;
         }
     }
 }
@@ -148,25 +140,18 @@ a:hover {
         a {
             color: #525252;
         }
-        $myMatRadioRippleColor: #aaf0ce;
+        
+        .mat-mdc-radio-button.mat-accent {
+            --mdc-radio-unselected-icon-color: #525252 !important;
+            --mdc-radio-unselected-hover-icon-color: #525252 !important;
+            --mdc-radio-selected-icon-color: #525252 !important;
+            --mdc-radio-selected-hover-icon-color: #525252 !important;
+            --mdc-radio-selected-pressed-icon-color: #525252 !important;
+            --mat-mdc-radio-checked-ripple-color: #525252 !important;
+        }
 
-        ::ng-deep .mat-radio-button.mat-accent {
-            &.mat-radio-checked .mat-radio-outer-circle {
-                border-color: $myMatRadioRippleColor !important; 
-            }
-
-            .mat-radio-inner-circle {
-                color: $myMatRadioRippleColor !important;
-                background-color: $myMatRadioRippleColor !important;
-            }
-
-            .mat-radio-outer-circle {
-                border-color: $myMatRadioRippleColor;
-            }
-
-            .mat-radio-ripple .mat-ripple-element {
-                background-color: $myMatRadioRippleColor !important;
-            }
+        ::ng-deep .mat-mdc-radio-button .mdc-form-field {
+            --mdc-theme-text-primary-on-background: #525252 !important;
         }
     }
 }
